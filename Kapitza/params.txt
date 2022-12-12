@@ -1,0 +1,1 @@
+KapitzaPendulumIntegrator (g/l=0.16,nu=20,a/l=0.1,gamma=0.01,theta0=pi/2,theta_dot_0=0,tfinal=400)
