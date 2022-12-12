@@ -83,7 +83,6 @@ freq = n/nmax;
 
 figure(3)
 plot(freq(1:nmax/2),log(power_spectra1)(1:nmax/2))
-xlim([0 0.02])
 xlabel('Frequency')
 ylabel('log(Power Spectra)')
 title('Power Spectra of $\theta_1$')
@@ -96,9 +95,7 @@ freq = n/nmax;
 
 figure(4)
 plot(freq(1:nmax/2),log(power_spectra2)(1:nmax/2))
-xlim([0 0.02])
 xlabel('Frequency')
-
 ylabel('log(Power Spectra)')
 title('Power Spectra of $\theta_2$')
 set(gca, 'linewidth', 2, 'fontsize', 20);
@@ -128,7 +125,6 @@ figure(8)
 plot(x(:,2),x(:,4));
 xlabel('$\theta_2$')
 ylabel('$\omega_2$')
-
 axis tight
 set(gca, 'linewidth', 2, 'fontsize', 22);
 
@@ -137,6 +133,24 @@ plot(x(:,1),x(:,2));
 xlabel('$\theta_1$')
 ylabel('$\theta_2$')
 set(gca, 'linewidth', 2, 'fontsize', 22);
+
+figure(10)
+plot(t_out,-cos(x(:,1) + a*cos(nu*t_out)));
+xlabel('Time')
+ylabel('Height')
+title('Height of bob 1')
+set(gca, 'linewidth', 2, 'fontsize', 22);
+ylim([-1-a, 1+a])
+
+
+figure(11)
+plot(t_out,-cos(x(:,2))-cos(x(:,1) + a*cos(nu*t_out)));
+xlabel('Time')
+ylabel('Height')
+title('Height of bob 2')
+set(gca, 'linewidth', 2, 'fontsize', 22);
+ylim([-2-a, 2+a])
+
 
 print(figure(1),'-dpdflatexstandalone','DoubleKapitzaPoincareMapped')
 print(figure(2),'-dpdflatexstandalone','DoubleKapitzaPoincare')
@@ -147,6 +161,8 @@ print(figure(6),'-dpdflatexstandalone','DoubleKapitzaTimeSeriesTheta2')
 print(figure(7),'-dpdflatexstandalone','DoubleKapitzaPhasePortrait1')
 print(figure(8),'-dpdflatexstandalone','DoubleKapitzaPhasePortrait2')
 print(figure(9),'-dpdflatexstandalone','DoubleKapitzaPhasePortraitTheta1vsTheta2')
+print(figure(10),'-dpdflatexstandalone','DoubleKapitzaHeight1')
+print(figure(11),'-dpdflatexstandalone','DoubleKapitzaHeight2')
 
 
 system('pdflatex DoubleKapitzaPoincareMapped')
@@ -158,6 +174,9 @@ system('pdflatex DoubleKapitzaTimeSeriesTheta2')
 system('pdflatex DoubleKapitzaPhasePortrait1')
 system('pdflatex DoubleKapitzaPhasePortrait2')
 system('pdflatex DoubleKapitzaPhasePortraitTheta1vsTheta2')
+system('pdflatex DoubleKapitzaHeight1')
+system('pdflatex DoubleKapitzaHeight2')
+
 
 
 system('rm *.log *.aux')

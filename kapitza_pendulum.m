@@ -17,7 +17,7 @@ x_0 = [x0 v0];
 t = linspace(tstart,tend,floor((tend-tstart)/dt));
 
 
-[t_out,x] = ode45(@(t,x) odefcn(t,x,g,nu,a,gamma),t,x_0);
+[t_out,x] = ode15s(@(t,x) odefcn(t,x,g,nu,a,gamma),t,x_0);
 
 nmax = tfinal/dt
 
